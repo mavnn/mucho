@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <!-- Main plugin class -->
+    <class>nu.john.mucho.MuchoPlugin</class>
+
+    <!-- Plugin meta-data -->
+    <name>Mucho plugin</name>
+    <description>This plugin logs in to conference rooms (MUC) and echoes all chats sent to it to that room.</description>
+    <author>John Harelius</author>
+
+    <version>1.4.0</version>
+    <date>7/9/2012</date>
+    <url>http://john.nu/blog/projekt/mucho</url>
+    <minServerVersion>3.7.1</minServerVersion>
+    <licenseType>gpl</licenseType>
+
+    <!-- Admin console entries -->
+    <adminconsole>
+        <!-- More on this below -->
+    </adminconsole>
+</plugin>

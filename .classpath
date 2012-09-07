@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry sourcepath="S:/Jive/Openfire/3.6.3/openfire_src/src" kind="lib" path="S:/lib/openfire-3.6.3/lib/openfire.jar">
+		<attributes>
+			<attribute value="file:/S:/Jive/Openfire/3.6.3/openfire_src/documentation/docs/javadoc/" name="javadoc_location"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

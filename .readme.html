@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+    <title>Mucho Plugin Readme</title>
+    <style type="text/css">
+        BODY {
+            font-size : 100%;
+        }
+        BODY, TD, TH {
+            font-family : tahoma, verdana, arial, helvetica, sans-serif;
+            font-size : 0.8em;
+        }
+        H2 {
+             font-size : 10pt;
+             font-weight : bold;
+        }
+        A:hover {
+            text-decoration : none;
+        }
+        H1 {
+            font-family : tahoma, arial, helvetica, sans-serif;
+            font-size : 1.4em;
+            font-weight: bold;
+            border-bottom : 1px #ccc solid;
+            padding-bottom : 2px;
+        }
+
+        TT {
+            font-family : courier new;
+            font-weight : bold;
+            color : #060;
+        }
+        PRE {
+            font-family : courier new;
+            font-size : 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h1>
+Mucho Plugin Readme
+</h1>
+
+<h2>Overview</h2>
+
+<p>
+The Mucho plugin spawn users that joins chat rooms and echoes all messages to that user in that room. 
+This could be useful for automated messaging to a JID that you want a group of people to 
+monitor (for example some a build server or JIRA).</p>
+<p>The plugin is a component with its own subdomain (mucho.server.com) and
+users are created for each chat room with the same username. Example: myroom@mucho.server.com
+joins the room myroom@conference.server.com. Room names are specified as server
+properties "plugin.mucho.ids" in a comma-separated string (example: "theuser,otheruser,thirduser").
+</p>
+<p>The word "Mucho" is short for "MUC Echo" (Multi User Conference Echo).</p>
+
+<h2>Installation</h2>
+
+<p>Rename mucho-[version].jar to mucho.jar and copy it into the plugins directory of your 
+Openfire installation. The plugin will then be automatically deployed. To upgrade to a new 
+version, copy the new mucho.jar file over the existing file.</p>
+
+<h2>Configuration</h2>
+
+<p>
+The Mucho plugin is configured via Openfire system properties.
+</p>
+
+<ul>
+    <li><tt>plugin.mucho.serviceName</tt> -- the name of the mucho service. If no value
+    is set, the default is "mucho".</li>
+    <li><tt>plugin.mucho.ids</tt> -- comma-separated list of rooms to join. Each room name
+    will have a corresponding user in the mucho service domain. Default: "".</li>
+    <li><tt>plugin.mucho.showSenderJID</tt> -- prepend each message sent by the bot with the JID of the original sender. If "true", JID is shown, otherwise not. Default: "false".</li>
+    <li><tt>plugin.mucho.debug</tt> -- debug flag. If "true", verbose debug message will be written to log. Default: "false".</li>
+    <li><tt>plugin.mucho.conferenceService</tt> -- specify conference service name. If set, it is used as conference service name, otherwise the first available is used. If no conference is avaiable "conference" is used. Default: "".</li>
+</ul>
+
+<h2>Using the Plugin</h2>
+
+<p>Join the chat room to monitor messages sent to it. You might add the user and send
+messages to it to make it send that message to the conference.</p>
+
+<p>You can send commands to the bot from the conference by prefixing message with a "command code". </p>
+
+<ul>
+<li><tt>@sayto: &lt;jid&gt; &lt;message&gt;</tt> -- Makes the bot say "message" to "jid".
+</ul>
+
+<h2>Example of usage</h2>
+In this example you have setup a Cruisecontrol build server to announce new builds to
+a Jabber user (JID).
+<ol>
+<li>Setup Mucho to join the room "cc" by setting the Server Property "plugin.mucho.ids" to "cc".</li>
+<li>Setup Cruisecontrol to announce to the Mucho user: "cc@mucho.server.com".</li>
+<li>Join the chat room "cc@confernce.server.com".</li>
+<li>Tell others that might want to know when cc is announcing a new build to join that chat room.</li>
+</ol>
+</p>
+</body>
+</html>

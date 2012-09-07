@@ -1,0 +1,39 @@
+<project name="Mucho" basedir="." default="compile">
+	
+	<property name="version" value="1.3.0"/>
+	<property name="plugin-dir" value="//server/opt/openfire/plugins"/>
+	<property name="min_server" value="3.6.0"/>
+	<property name="parsed_tempfile" value="plugin.xml~"/>
+	
+    <target name="clean">
+        <delete dir="classes"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="classes"/>
+        <javac srcdir="src" destdir="classes"/>
+    </target>
+
+	<target name="jar" depends="compile">
+    	<copy file="plugin.xml"  tofile="${parsed_tempfile}" overwrite="true"/>
+    	<replace file="plugin.xml" token="@VERSION@" value="${version}"/>
+		<tstamp>
+			<format property="DATE" pattern="yyyy-MM-dd" locale="sv,SE"/>
+		</tstamp>
+    	<replace file="plugin.xml" token="@DATE@" value="${DATE}"/>
+    	<replace file="plugin.xml" token="@MIN_SERVER@" value="${min_server}"/>
+    	<jar destfile="./mucho-${version}.jar" basedir="." update="true" excludes=".*,*.jar,build.xml,**/*.java,${parsed_tempfile}"/>
+    	<copy file="${parsed_tempfile}" tofile="plugin.xml" overwrite="true"/>
+    	<delete file="${parsed_tempfile}"/>
+    </target>
+	
+	<target name="copy" depends="jar">
+    	<copy file="mucho-${version}.jar" tofile="${plugin-dir}/mucho.jar" overwrite="true">
+     	</copy>
+	</target>
+
+	<target name="src">
+        <jar destfile="./mucho-${version}-src.jar" basedir="." update="true" excludes="**/*.class,**/*.jar"/>
+	</target>
+
+</project>
