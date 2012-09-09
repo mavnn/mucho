@@ -6,3 +6,5 @@ the openfire source and use `ant plugins` as normal.
 
 Alternatively, just download the compiled jar and drop it into your
 plugins directory.
+
+Original project page at http://josjos.se/blog/projekt/mucho/
